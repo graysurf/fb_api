@@ -1,0 +1,79 @@
+<configuration debug="false">
+    <jmxConfigurator/>
+    <conversionRule conversionWord="colored" converterClass="com.pubgame.alphakigo.util.logging.HighlightingConverter"/>
+    <conversionRule conversionWord="date" converterClass="com.pubgame.alphakigo.util.logging.AkkaDateConverter"/>
+    <conversionRule conversionWord="actor" converterClass="com.pubgame.alphakigo.util.logging.AkkaPathOrThreadConverter"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%colored(%-5level)] [%date{yyyy/MM/dd HH:mm:ss.SSS}] [%actor] %-20logger{20} - %message%n%xException{100}</pattern>
+    <!--<pattern>[%colored(%-5level)] [%date{yyyy/MM/dd HH:mm:ss.SSS}] [%actor] %-20logger{20} - %message%n%xException{10}</pattern>-->
+</encoder>
+</appender>
+
+<appender name="ASYNC_STDOUT" class="ch.qos.logback.classic.AsyncAppender">
+<appender-ref ref="STDOUT"/>
+<includeCallerData>true</includeCallerData>
+</appender>
+
+<root level="INFO">
+<appender-ref ref="ASYNC_STDOUT"/>
+</root>
+
+<!--<logger name="com.pubgame.itd" level="DEBUG" />-->
+
+    <!-- Off these ones as they are annoying, and anyway we manage configuration ourself -->
+    <logger name="com.google.inject.internal.BytecodeGen" level="INFO"/>
+    <logger name="com.google.inject.internal.util.Stopwatch" level="INFO"/>
+
+    <!-- logger name="slick.ast.Node$" level="INFO" / -->
+
+    <logger name="slick.backend.DatabaseComponent" level="INFO" />
+    <logger name="slick.compiler.AssignUniqueSymbols" level="INFO" />
+    <logger name="slick.compiler.CreateResultSetMapping" level="INFO" />
+    <logger name="slick.compiler.CodeGen" level="INFO" />
+    <logger name="slick.compiler.ExpandConditionals" level="INFO" />
+    <logger name="slick.compiler.ExpandTables" level="INFO" />
+    <logger name="slick.compiler.ExpandSums" level="INFO" />
+    <logger name="slick.compiler.ForceOuterBinds" level="INFO" />
+    <logger name="slick.compiler.FlattenProjections" level="INFO" />
+    <logger name="slick.compiler.HoistClientOps" level="INFO" />
+    <logger name="slick.compiler.MergeToComprehensions" level="INFO" />
+    <logger name="slick.compiler.PruneProjections" level="INFO" />
+    <logger name="slick.compiler.QueryCompiler" level="INFO" />
+    <logger name="slick.compiler.QueryCompilerBenchmark" level="INFO" />
+    <logger name="slick.compiler.RemoveFieldNames" level="INFO" />
+    <logger name="slick.compiler.RewriteJoins" level="INFO" />
+    <logger name="slick.compiler.CreateAggregates" level="INFO" />
+
+    <logger name="slick.jdbc.JdbcBackend.benchmark" level="INFO" />
+    <logger name="slick.jdbc.JdbcBackend.statement" level="INFO" />
+    <logger name="slick.relational.ResultConverterCompiler" level="INFO" />
+    <logger name="slick.jdbc.StatementInvoker.result" level="INFO" />
+    <logger name="com.zaxxer.hikari" level="INFO" />
+
+    <logger name="sun.rmi.transport.tcp" level="INFO" />
+    <logger name="sun.rmi.transport.misc" level="INFO" />
+    <logger name="sun.rmi.server.call" level="INFO" />
+    <logger name="sun.rmi.loader" level="INFO" />
+    <logger name="sun.rmi.dgc" level="INFO" />
+    <logger name="javax.management.remote.rmi" level="INFO" />
+    <logger name="javax.management.remote.misc" level="INFO" />
+    <logger name="javax.management.mbeanserver" level="INFO" />
+    <logger name="javax.management.remote.timeout" level="INFO" />
+
+    <logger name="org.apache" level="INFO" />
+    <logger name="sun.net" level="INFO" />
+    <logger name="sun.rmi" level="INFO" />
+    <logger name="org.jboss.netty.handler.ssl" level="INFO" />
+
+    <logger name="javax.mail" level="ERROR" />
+    <logger name="javax.activation" level="INFO" />
+    <logger name="com.sun.mail" level="INFO" />
+
+    <logger name="org.quartz" level="OFF" />
+    <logger name="com.pubgame.itd.http.FbHttpClientEndpoint" level="INFO" />
+    <logger name="akka.http.impl.engine.client.PoolInterfaceActor" level="DEBUG" />
+    <logger name="akka.actor.OneForOneStrategy" level="DEBUG" />
+
+</configuration>

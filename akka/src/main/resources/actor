@@ -1,0 +1,26 @@
+Create Insight Async Task
+
+													  forward
+        SubmitInsightJob                          SubmitInsightJob
+     -------------------------> GameInfoActor ------------------------->
+                                                                  							CreateInsightJobInAccount
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - >  				 ------------------------------->
+Play																	 FbInsightActor									  FbAccountAcotr
+     <------------------------------------------------------------------ 				 <-------------------------------
+ 							     AskSuccess    												CreateInsightJobInAccountDone
+ 							     AskFailure
+
+
+
+
+
+Received Insight Async Date
+
+
+													   forward
+        InsightAsyncJobsDone                    InsightAsyncJobsDone
+     -------------------------> GameInfoActor ------------------------->  				 	        GetInsight
+                                                                         				------------------------------->
+Play - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - > FbInsightActor	             					  FbAsyncAcotr
+                                                                         				<-------------------------------
+ 							                													InsightWriteJobsDone

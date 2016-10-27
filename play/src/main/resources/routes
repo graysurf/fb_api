@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /systemStatus  com.pubgame.play.controllers.Application.systemStatus
+GET         /insights      com.pubgame.play.controllers.Application.insights(from: String, to: String, password: String)
+GET         /jobs          com.pubgame.play.controllers.Application.jobs(password: String)
+POST        /fb            com.pubgame.play.controllers.Application.fb
+GET         /fb            com.pubgame.play.controllers.Application.fb
+
+GET         /setup         com.pubgame.play.controllers.Application.setup(password: String)
+
+
+
